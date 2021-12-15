@@ -153,9 +153,15 @@ class UI {
     return form;
   }
 
-  static getFormInformation() {}
+  static initEventListener() {
+    const searchBar = document.querySelector(".searchBar");
+    const locName = document.getElementById("locName");
 
-  static initEventListener() {}
+    searchBar.addEventListener("submit", (e) => {
+      e.preventDefault();
+      fetchData(locName.value);
+    });
+  }
 
   static previousSearch() {
     const oldSearch = document.createElement("div");
@@ -177,11 +183,3 @@ class UI {
 }
 
 addEventListener("DOMContentLoaded", UI.loadUI());
-
-const searchBar = document.querySelector(".searchBar");
-const locName = document.getElementById("locName");
-
-searchBar.addEventListener("submit", (e) => {
-  e.preventDefault();
-  fetchData(locName.value);
-});
