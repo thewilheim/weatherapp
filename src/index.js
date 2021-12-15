@@ -74,6 +74,7 @@ class UI {
   static loadUI() {
     UI.loadLeft();
     UI.loadRight();
+    UI.initEventListener();
     fetchData("Woodrising");
   }
 
@@ -144,13 +145,17 @@ class UI {
 
     form.innerHTML = `
             <input type="text" name="location" id="locName" placeholder="Location">
-            <button type="submit">Search</button>
+            <button type="submit" id="searchBtn">Search</button>
     `;
 
     form.classList.add("searchBar");
 
     return form;
   }
+
+  static getFormInformation() {}
+
+  static initEventListener() {}
 
   static previousSearch() {
     const oldSearch = document.createElement("div");
@@ -172,3 +177,11 @@ class UI {
 }
 
 addEventListener("DOMContentLoaded", UI.loadUI());
+
+const searchBar = document.querySelector(".searchBar");
+const locName = document.getElementById("locName");
+
+searchBar.addEventListener("submit", (e) => {
+  e.preventDefault();
+  fetchData(locName.value);
+});
