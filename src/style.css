@@ -1,0 +1,127 @@
+:root {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  --offWhite: rgba(207, 206, 206, 0.747);
+  --black: rgba(85, 83, 83, 0.13);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background-size: cover;
+  font-family: "Lato", sans-serif;
+}
+
+.container {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "leftSide leftSide rightSide"
+    "leftSide leftSide rightSide"
+    "leftSide leftSide rightSide";
+}
+
+.leftSide {
+  grid-area: leftSide;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
+}
+
+.leftDivContent {
+  align-items: flex-end;
+  flex-direction: row;
+  margin-bottom: 20%;
+  height: 25%;
+  width: 75%;
+}
+
+.leftDivInfo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+.leftDivInfo > h1 {
+  font-size: 20rem;
+  margin: 0;
+  padding: 0;
+}
+
+.leftDivInfo > div > h2 {
+  font-size: 8rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.leftDivInfo > div > p {
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 0.02rem;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  padding: 0;
+  margin: 0;
+}
+
+.rightSide {
+  grid-area: rightSide;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 4rem;
+  background-color: var(--black);
+  backdrop-filter: blur(10px);
+  color: var(--offWhite);
+}
+
+.searchBar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--offWhite);
+  padding-bottom: 1rem;
+}
+
+.searchBar > input {
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  width: 85%;
+}
+
+.searchBar > input:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+}
+
+.weatherDetails,
+.searchHistory {
+  color: white;
+  height: 25rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--offWhite);
+  border-radius: 1px;
+}
