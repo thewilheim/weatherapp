@@ -3,7 +3,7 @@ import "./style.css";
 
 async function fetchData(location) {
   const response = await fetch(
-    `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`,
     { mode: "cors" }
   );
 
