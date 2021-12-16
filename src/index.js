@@ -1,4 +1,4 @@
-import { apiKey } from "./modules/API";
+import { apiKey } from "./modules/config";
 import "./style.css";
 
 async function fetchData(location) {
