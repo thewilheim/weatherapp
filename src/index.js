@@ -1,10 +1,10 @@
-import { apiKey } from "./modules/config";
+import { config } from "./modules/config";
 import { format } from "date-fns";
 import "./style.css";
 
 async function fetchData(location) {
   const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${config.MY_API_TOKEN}${config.SECRET_API_KEY}`,
     { mode: "cors" }
   );
 
