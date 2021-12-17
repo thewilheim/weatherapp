@@ -1,4 +1,5 @@
 import { apiKey } from "./modules/config";
+import { format } from "date-fns";
 import "./style.css";
 
 async function fetchData(location) {
@@ -29,16 +30,20 @@ class handleData {
     this.weather = weatherData.weather;
     this.date = handleData.getDate(weatherData.dt);
     this.country = handleData.getCountry(weatherData.sys.country);
-    console.log(weatherData);
     this.icon = handleData.getImage(weatherData.weather[0].main);
-
     UI.updateInformation();
   }
 
   static getDate() {
     let today = new Date().getTime();
     let date = new Date(today);
-    return date;
+    console.log(date);
+    let todayInformation = `${format(date, "p")} - ${format(
+      date,
+      "EEEE"
+    )}, ${format(date, "do")} ${format(date, "MMM")} '${format(date, "yy")} `;
+
+    return todayInformation;
   }
 
   static getCountry(code) {
@@ -108,14 +113,11 @@ class UI {
 
     const form = UI.searchBar();
 
-    const oldSearch = UI.previousSearch();
-
     const weatherDetails = UI.weatherDetails();
 
     // Add divs to the viewport
     rightDiv.appendChild(rightDivContent);
     rightDiv.appendChild(form);
-    rightDiv.appendChild(oldSearch);
     rightDiv.appendChild(weatherDetails);
     container.appendChild(rightDiv);
   }
@@ -127,9 +129,8 @@ class UI {
                                     <h1>${Math.round(
                                       handleData.temperature.temp
                                     )}&#176;</h1>
-                                    <div><h2>${
-                                      handleData.location
-                                    }</h2><p>11:57 - Monday, 13 Dec '21 </p></div>
+                                    <div><h2>${handleData.location}</h2>
+                                    <p>${handleData.date}</p></div>
                                     <div>
                                     <img src=" http://openweathermap.org/img/wn/${
                                       handleData.weather[0].icon
@@ -163,15 +164,6 @@ class UI {
       e.preventDefault();
       fetchData(locName.value);
     });
-  }
-
-  static previousSearch() {
-    const oldSearch = document.createElement("div");
-
-    oldSearch.innerHTML = `<p>Syndey</p>`;
-    oldSearch.classList.add("searchHistory");
-
-    return oldSearch;
   }
 
   static weatherDetails() {
