@@ -138,6 +138,8 @@ class UI {
                                       handleData.weather[0].description
                                     }</p></div>
                                 </div>`;
+
+    UI.updateWeatherDetails();
   }
 
   static searchBar() {
@@ -172,13 +174,25 @@ class UI {
     return oldSearch;
   }
 
-  static weatherDetails(weatherData) {
+  static weatherDetails() {
     const detailsContainer = document.createElement("div");
 
-    detailsContainer.innerHTML = `<h3>Weather Details</h3>`;
+    detailsContainer.innerHTML = `<h3>Weather Details</h3>
+                                  <div><h4>Feels Like</h4><p>21</p></div>
+                                  <div><h4>Humidity</h4><p>21</p></div>
+                                  <div><h4>Wind</h4><p>1km/h</p></div>`;
     detailsContainer.classList.add("weatherDetails");
 
     return detailsContainer;
+  }
+
+  static updateWeatherDetails() {
+    const detailsContainer = document.querySelector(".weatherDetails");
+
+    detailsContainer.innerHTML = `<h3>Weather Details</h3>
+                                  <div><h4>Feels Like</h4><p>${handleData.temperature.feels_like}</p></div>
+                                  <div><h4>Humidity</h4><p>${handleData.temperature.humidity}</p></div>
+                                  <div><h4>Wind</h4><p>${handleData.wind.speed}km/h</p></div>`;
   }
 }
 

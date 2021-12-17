@@ -114,7 +114,6 @@ img {
 }
 
 input,
-select,
 textarea {
   color: white;
 }
@@ -130,4 +129,21 @@ textarea {
   font-size: 1.5rem;
   border-bottom: 2px solid var(--offWhite);
   border-radius: 1px;
+}
+
+.weatherDetails {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.weatherDetails > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.weatherDetails > div > h4 {
+  font-weight: lighter;
 }
